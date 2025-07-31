@@ -89,6 +89,13 @@
 .card-chart {
     height: 60px;
     margin-top: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+.card-chart canvas {
+    max-width: 100% !important;
+    height: 60px !important;
 }
 
 .exposure-bar {
@@ -326,6 +333,14 @@
     padding: 1.5rem;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.allocation-chart-container canvas {
+    max-width: 100% !important;
+    height: 250px !important;
 }
 
 .allocation-chart-container h3,
@@ -412,6 +427,14 @@
     padding: 1.5rem;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.risk-card canvas {
+    max-width: 100% !important;
+    height: 250px !important;
 }
 
 .position-risk-list {
@@ -481,7 +504,14 @@
     padding: 1.5rem;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: 100%;
     height: 400px;
+}
+
+.performance-chart-container canvas {
+    max-width: 100% !important;
+    height: 350px !important;
 }
 
 /* Modal Styles */
@@ -570,6 +600,38 @@
     
     .section-controls {
         justify-content: center;
+    }
+}
+
+/* Chart Responsive Fixes */
+@media (max-width: 768px) {
+    .allocation-chart-container,
+    .risk-card,
+    .performance-chart-container {
+        height: 250px !important;
+        padding: 1rem !important;
+    }
+    
+    .allocation-chart-container canvas,
+    .risk-card canvas,
+    .performance-chart-container canvas {
+        height: 200px !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .allocation-chart-container,
+    .risk-card,
+    .performance-chart-container {
+        height: 200px !important;
+        padding: 0.5rem !important;
+    }
+    
+    .allocation-chart-container canvas,
+    .risk-card canvas,
+    .performance-chart-container canvas {
+        height: 150px !important;
     }
 }
 

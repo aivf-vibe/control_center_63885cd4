@@ -167,10 +167,14 @@ function updateOverviewCards() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: { padding: { top: 10, right: 10, bottom: 10, left: 10 } },
                 plugins: { legend: { display: false } },
                 scales: {
                     x: { display: false },
                     y: { display: false }
+                },
+                layout: {
+                    padding: { top: 5, right: 5, bottom: 5, left: 5 }
                 }
             }
         });
@@ -203,6 +207,7 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: { padding: { top: 10, right: 10, bottom: 10, left: 10 } },
                 plugins: {
                     legend: {
                         position: 'bottom',
@@ -234,6 +239,7 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: { padding: { top: 10, right: 10, bottom: 10, left: 10 } },
                 plugins: {
                     legend: {
                         labels: { color: '#ffffff' }
@@ -279,6 +285,7 @@ function initializeCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: { padding: { top: 10, right: 10, bottom: 10, left: 10 } },
                 plugins: {
                     legend: {
                         labels: { color: '#ffffff' }
