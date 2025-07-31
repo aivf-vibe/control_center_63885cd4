@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Details - Hedge Fund Analytics</title>
+    <meta name="description" content="Detailed portfolio analysis with position-level metrics, historical performance, and risk attribution">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="portfolio-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>HedgeFund Pro</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="portfolio-details.html" class="nav-link active">Portfolio Details</a></li>
+                <li><a href="#analytics" class="nav-link">Analytics</a></li>
+                <li><a href="#risk" class="nav-link">Risk</a></li>
+                <li><a href="#reports" class="nav-link">Reports</a></li>
+            </ul>
+            <div class="nav-user">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero portfolio-hero">
+        <div class="hero-content">
+            <h1>Portfolio Details</h1>
+            <p>Comprehensive position-level analysis and historical performance tracking</p>
+            <div class="portfolio-summary">
+                <div class="summary-card">
+                    <h3>Total Positions</h3>
+                    <span class="summary-value">247</span>
+                </div>
+                <div class="summary-card">
+                    <h3>Long Positions</h3>
+                    <span class="summary-value">189</span>
+                </div>
+                <div class="summary-card">
+                    <h3>Short Positions</h3>
+                    <span class="summary-value">58</span>
+                </div>
+                <div class="summary-card">
+                    <h3>Gross Exposure</h3>
+                    <span class="summary-value">$3.2B</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="portfolio-main">
+        <!-- Portfolio Overview Cards -->
+        <section class="overview-section">
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Portfolio Value</h3>
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="card-value">$2.4B</div>
+                    <div class="card-change positive">+$18.5M today</div>
+                    <div class="card-chart">
+                        <canvas id="valueChart" width="200" height="60"></canvas>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Net Exposure</h3>
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="card-value">73.5%</div>
+                    <div class="card-change neutral">-2.1% vs target</div>
+                    <div class="exposure-bar">
+                        <div class="exposure-fill" style="width: 73.5%"></div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Turnover</h3>
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="card-value">12.8%</div>
+                    <div class="card-change positive">-3.2% vs last month</div>
+                    <div class="turnover-indicator">
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot"></span>
+                        <span class="indicator-dot"></span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Concentration</h3>
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="card-value">Top 10: 42.3%</div>
+                    <div class="card-change negative">+5.1% risk</div>
+                    <div class="concentration-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Monitor top positions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Position Search and Filters -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="positionSearch" placeholder="Search positions by symbol, name, or sector...">
+                </div>
+                <div class="filter-group">
+                    <select id="sectorFilter">
+                        <option value="">All Sectors</option>
+                        <option value="technology">Technology</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="finance">Financial Services</option>
+                        <option value="consumer">Consumer</option>
+                        <option value="industrial">Industrial</option>
+                        <option value="energy">Energy</option>
+                    </select>
+                    <select id="sizeFilter">
+                        <option value="">All Sizes</option>
+                        <option value="large">Large (>$100M)</option>
+                        <option value="medium">Medium ($50-100M)</option>
+                        <option value="small">Small (<$50M)</option>
+                    </select>
+                    <select id="performanceFilter">
+                        <option value="">All Performance</option>
+                        <option value="gainers">Top Gainers</option>
+                        <option value="losers">Top Losers</option>
+                        <option value="active">Most Active</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Holdings Table -->
+        <section class="holdings-section">
+            <div class="section-header">
+                <h2>Detailed Holdings</h2>
+                <div class="section-controls">
+                    <button class="btn-export" onclick="exportHoldings()">
+                        <i class="fas fa-download"></i> Export CSV
+                    </button>
+                    <button class="btn-refresh" onclick="refreshHoldings()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="detailed-holdings-table">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="symbol">
+                                Symbol <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="name">
+                                Name <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="sector">
+                                Sector <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="position">
+                                Position <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="weight">
+                                Weight <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="value">
+                                Market Value <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="daily">
+                                Daily Change <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="mtd">
+                                MTD <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="ytd">
+                                YTD <i class="fas fa-sort"></i>
+                            </th>
+                            <th class="sortable" data-sort="beta">
+                                Beta <i class="fas fa-sort"></i>
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="holdingsTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-pagination">
+                <div class="pagination-info">
+                    Showing <span id="showingFrom">1</span> to <span id="showingTo">20</span> of <span id="totalHoldings">247</span> positions
+                </div>
+                <div class="pagination-controls">
+                    <button id="prevPage" onclick="changePage(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span id="pageInfo">Page 1 of 13</span>
+                    <button id="nextPage" onclick="changePage(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sector Allocation -->
+        <section class="allocation-section">
+            <h2>Sector Allocation Analysis</h2>
+            <div class="allocation-grid">
+                <div class="allocation-chart-container">
+                    <h3>By Sector</h3>
+                    <canvas id="sectorChart"></canvas>
+                </div>
+                <div class="sector-details">
+                    <h3>Sector Performance</h3>
+                    <div class="sector-list">
+                        <div class="sector-item">
+                            <div class="sector-info">
+                                <span class="sector-name">Technology</span>
+                                <span class="sector-weight">35.2%</span>
+                            </div>
+                            <div class="sector-performance">
+                                <span class="performance-value positive">+2.4%</span>
+                                <div class="performance-bar">
+                                    <div class="bar-fill positive" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sector-item">
+                            <div class="sector-info">
+                                <span class="sector-name">Healthcare</span>
+                                <span class="sector-weight">18.7%</span>
+                            </div>
+                            <div class="sector-performance">
+                                <span class="performance-value positive">+1.8%</span>
+                                <div class="performance-bar">
+                                    <div class="bar-fill positive" style="width: 72%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sector-item">
+                            <div class="sector-info">
+                                <span class="sector-name">Financial Services</span>
+                                <span class="sector-weight">15.3%</span>
+                            </div>
+                            <div class="sector-performance">
+                                <span class="performance-value negative">-0.6%</span>
+                                <div class="performance-bar">
+                                    <div class="bar-fill negative" style="width: 45%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sector-item">
+                            <div class="sector-info">
+                                <span class="sector-name">Consumer</span>
+                                <span class="sector-weight">12.1%</span>
+                            </div>
+                            <div class="sector-performance">
+                                <span class="performance-value positive">+0.9%</span>
+                                <div class="performance-bar">
+                                    <div class="bar-fill positive" style="width: 58%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Attribution -->
+        <section class="risk-section">
+            <h2>Risk Attribution Analysis</h2>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <h3>Factor Risk</h3>
+                    <canvas id="factorRiskChart"></canvas>
+                </div>
+                <div class="risk-card">
+                    <h3>Position Risk</h3>
+                    <div class="position-risk-list">
+                        <div class="risk-item">
+                            <span class="risk-symbol">AAPL</span>
+                            <span class="risk-contribution">$2.4M</span>
+                            <span class="risk-percentage">12.8%</span>
+                        </div>
+                        <div class="risk-item">
+                            <span class="risk-symbol">MSFT</span>
+                            <span class="risk-contribution">$1.9M</span>
+                            <span class="risk-percentage">10.2%</span>
+                        </div>
+                        <div class="risk-item">
+                            <span class="risk-symbol">GOOGL</span>
+                            <span class="risk-contribution">$1.6M</span>
+                            <span class="risk-percentage">8.7%</span>
+                        </div>
+                        <div class="risk-item">
+                            <span class="risk-symbol">AMZN</span>
+                            <span class="risk-contribution">$1.3M</span>
+                            <span class="risk-percentage">7.1%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historical Performance -->
+        <section class="performance-section">
+            <h2>Historical Performance Analysis</h2>
+            <div class="performance-controls">
+                <div class="time-selector">
+                    <button class="time-btn active" data-period="1M">1M</button>
+                    <button class="time-btn" data-period="3M">3M</button>
+                    <button class="time-btn" data-period="6M">6M</button>
+                    <button class="time-btn" data-period="1Y">1Y</button>
+                    <button class="time-btn" data-period="YTD">YTD</button>
+                </div>
+            </div>
+            <div class="performance-chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <!-- Position Detail Modal -->
+    <div id="positionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="portfolio-details.js"></script>
+</body>
+</html>

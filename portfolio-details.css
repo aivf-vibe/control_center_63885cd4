@@ -1,0 +1,575 @@
+
+
+
+/* Portfolio Details Specific Styles */
+
+.portfolio-hero {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(15, 15, 35, 0.9) 100%);
+    margin-top: 80px;
+    padding: 3rem 2rem;
+}
+
+.portfolio-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-card h3 {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00d4ff;
+}
+
+/* Overview Section */
+.overview-section {
+    margin: 2rem 0;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.overview-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    font-size: 1rem;
+    color: #b3b3b3;
+    font-weight: 500;
+}
+
+.card-header i {
+    color: #00d4ff;
+    font-size: 1.2rem;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.card-change {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.card-chart {
+    height: 60px;
+    margin-top: 1rem;
+}
+
+.exposure-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.exposure-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d4ff, #00ff88);
+    transition: width 0.3s ease;
+}
+
+.turnover-indicator {
+    display: flex;
+    gap: 4px;
+    margin-top: 1rem;
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.indicator-dot.active {
+    background: #00ff88;
+}
+
+.concentration-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffa502;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Filters Section */
+.filters-section {
+    margin: 2rem 0;
+}
+
+.filters-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b3b3b3;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+}
+
+.search-box input::placeholder {
+    color: #b3b3b3;
+}
+
+.filter-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-group select {
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+}
+
+/* Holdings Section */
+.holdings-section {
+    margin: 2rem 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.section-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-export, .btn-refresh {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid #00d4ff;
+    border-radius: 6px;
+    color: #00d4ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-export:hover, .btn-refresh:hover {
+    background: #00d4ff;
+    color: #0f0f23;
+}
+
+.detailed-holdings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detailed-holdings-table th,
+.detailed-holdings-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailed-holdings-table th {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.detailed-holdings-table th:hover {
+    background: rgba(0, 212, 255, 0.2);
+}
+
+.sortable {
+    user-select: none;
+}
+
+.sortable i {
+    margin-left: 0.5rem;
+    opacity: 0.5;
+}
+
+.sortable:hover i {
+    opacity: 1;
+}
+
+.detailed-holdings-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.detailed-holdings-table .positive {
+    color: #00ff88;
+}
+
+.detailed-holdings-table .negative {
+    color: #ff4757;
+}
+
+/* Table Pagination */
+.table-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.pagination-info {
+    color: #b3b3b3;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pagination-controls button {
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: #00d4ff;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Allocation Section */
+.allocation-section {
+    margin: 3rem 0;
+}
+
+.allocation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.allocation-chart-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.allocation-chart-container h3,
+.sector-details h3 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.sector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sector-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.sector-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sector-name {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.sector-weight {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+.sector-performance {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.performance-value {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.performance-bar {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.bar-fill.positive {
+    background: #00ff88;
+}
+
+.bar-fill.negative {
+    background: #ff4757;
+}
+
+/* Risk Section */
+.risk-section {
+    margin: 3rem 0;
+}
+
+.risk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.risk-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.position-risk-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.risk-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.risk-symbol {
+    font-weight: 600;
+    color: #00d4ff;
+}
+
+.risk-contribution {
+    color: #ffffff;
+}
+
+.risk-percentage {
+    color: #b3b3b3;
+}
+
+/* Performance Section */
+.performance-section {
+    margin: 3rem 0;
+}
+
+.performance-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.time-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.25rem;
+}
+
+.time-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.time-btn.active,
+.time-btn:hover {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+}
+
+.performance-chart-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 400px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #1a1a2e;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #b3b3b3;
+}
+
+.close:hover {
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .allocation-grid,
+    .risk-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        min-width: auto;
+    }
+    
+    .detailed-holdings-table {
+        font-size: 0.9rem;
+    }
+    
+    .detailed-holdings-table th,
+    .detailed-holdings-table td {
+        padding: 0.5rem;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .section-controls {
+        justify-content: center;
+    }
+}
+
