@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hedge Fund Control Center - Advanced Analytics Dashboard</title>
+    <meta name="description" content="Comprehensive hedge fund management dashboard with real-time portfolio analytics, risk metrics, and performance tracking">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>HedgeFund Pro</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#analytics" class="nav-link">Analytics</a></li>
+                <li><a href="#risk" class="nav-link">Risk</a></li>
+                <li><a href="#reports" class="nav-link">Reports</a></li>
+            </ul>
+            <div class="nav-user">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hedge Fund Control Center</h1>
+            <p>Advanced analytics and real-time portfolio management for institutional investors</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>$2.4B</h3>
+                    <p>Assets Under Management</p>
+                </div>
+                <div class="stat-card">
+                    <h3>+15.7%</h3>
+                    <p>YTD Performance</p>
+                </div>
+                <div class="stat-card">
+                    <h3>0.92</h3>
+                    <p>Sharpe Ratio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+        <!-- Portfolio Overview -->
+        <section class="dashboard-section">
+            <h2>Portfolio Overview</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Total AUM</h3>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="metric-value">$2.4B</div>
+                    <div class="metric-change positive">+5.2% this month</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Today's P&L</h3>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="metric-value">+$3.2M</div>
+                    <div class="metric-change positive">+0.13%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Volatility</h3>
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <div class="metric-value">12.8%</div>
+                    <div class="metric-change neutral">-0.3% vs 30d avg</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Max Drawdown</h3>
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="metric-value">-8.4%</div>
+                    <div class="metric-change positive">Recovered 65%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="dashboard-section">
+            <h2>Performance Analytics</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Cumulative Returns</h3>
+                    <canvas id="returnsChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Asset Allocation</h3>
+                    <canvas id="allocationChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Metrics -->
+        <section class="dashboard-section">
+            <h2>Risk Analysis</h2>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <h3>Value at Risk (95%)</h3>
+                    <div class="risk-value">-$18.5M</div>
+                    <div class="risk-explanation">Daily VaR at 95% confidence level</div>
+                </div>
+                <div class="risk-card">
+                    <h3>Beta</h3>
+                    <div class="risk-value">0.78</div>
+                    <div class="risk-explanation">Market sensitivity relative to S&P 500</div>
+                </div>
+                <div class="risk-card">
+                    <h3>Tracking Error</h3>
+                    <div class="risk-value">4.2%</div>
+                    <div class="risk-explanation">Deviation from benchmark</div>
+                </div>
+                <div class="risk-card">
+                    <h3>Information Ratio</h3>
+                    <div class="risk-value">1.34</div>
+                    <div class="risk-explanation">Risk-adjusted excess returns</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Holdings Table -->
+        <section class="dashboard-section">
+            <h2>Top Holdings</h2>
+            <div class="table-container">
+                <table class="holdings-table">
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th>Sector</th>
+                            <th>Weight</th>
+                            <th>Market Value</th>
+                            <th>Daily Change</th>
+                            <th>YTD Return</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AAPL</td>
+                            <td>Technology</td>
+                            <td>8.5%</td>
+                            <td>$204M</td>
+                            <td class="positive">+1.2%</td>
+                            <td class="positive">+22.4%</td>
+                        </tr>
+                        <tr>
+                            <td>MSFT</td>
+                            <td>Technology</td>
+                            <td>7.2%</td>
+                            <td>$173M</td>
+                            <td class="positive">+0.8%</td>
+                            <td class="positive">+18.7%</td>
+                        </tr>
+                        <tr>
+                            <td>GOOGL</td>
+                            <td>Technology</td>
+                            <td>6.1%</td>
+                            <td>$146M</td>
+                            <td class="negative">-0.5%</td>
+                            <td class="positive">+15.3%</td>
+                        </tr>
+                        <tr>
+                            <td>AMZN</td>
+                            <td>Consumer Discretionary</td>
+                            <td>5.8%</td>
+                            <td>$139M</td>
+                            <td class="positive">+1.1%</td>
+                            <td class="positive">+28.9%</td>
+                        </tr>
+                        <tr>
+                            <td>TSLA</td>
+                            <td>Consumer Discretionary</td>
+                            <td>4.9%</td>
+                            <td>$118M</td>
+                            <td class="negative">-2.3%</td>
+                            <td class="negative">-12.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Feature Explanation -->
+        <section class="features-section">
+            <h2>Dashboard Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chart-area"></i>
+                    <h3>Real-time Analytics</h3>
+                    <p>Live portfolio tracking with millisecond updates on positions, P&L, and risk metrics</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Risk Management</h3>
+                    <p>Comprehensive risk assessment including VaR, stress testing, and scenario analysis</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Automated Reporting</h3>
+                    <p>Generate detailed performance reports and regulatory compliance documents instantly</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI Insights</h3>
+                    <p>Machine learning algorithms provide predictive analytics and trading recommendations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>How often is the data updated?</h3>
+                    <p>Portfolio data is updated in real-time with market data feeds. Risk metrics are recalculated every 15 minutes, while performance analytics are updated at market close.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What risk models are used?</h3>
+                    <p>We utilize multiple risk models including parametric VaR, Monte Carlo simulations, historical simulation, and stress testing scenarios based on major market events.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I customize the dashboard?</h3>
+                    <p>Yes, the dashboard is fully customizable. You can create custom views, set up personalized alerts, and configure which metrics are displayed prominently.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How is performance calculated?</h3>
+                    <p>Performance is calculated using time-weighted returns (TWR) methodology, adjusted for cash flows and fees. All returns are net of management and performance fees.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HedgeFund Pro</h3>
+                <p>Advanced analytics for institutional investors</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#risk">Risk</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#api">API Documentation</a></li>
+                    <li><a href="#contact">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#disclaimer">Risk Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HedgeFund Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
